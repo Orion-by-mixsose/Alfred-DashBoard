@@ -21,7 +21,7 @@ def read_root():
 
 @app.post("/relay/{state}")
 def control_relay(state: str):
-    if state not in ["on, "off]:
+    if state not in ["on", "off"]:
         return {"error": "state doit etre 'on' ou 'off'" }
     mqtt_client.publish("maison/relay1/set", state.upper())
     return {"status": "commande envoyee", "state": state}
