@@ -1,10 +1,14 @@
 from fastapi import FastAPI
 import paho.mqtt.client as mqtt
+from dotenv import load_dotenv
+import os
 
-MQTT_BROKER = "localhost"
-MQTT_PORT = 1883
-MQTT_USER = "esp32"
-MQTT_PASSWORD = "Rives/38140"
+load_dotenv()
+
+MQTT_BROKER = os.getenv("MQTT_BROKER")
+MQTT_PORT = os.getenv("MQTT_PORT")
+MQTT_USER = os.getenv("MQTT_USER")
+MQTT_PASSWORD = os.getenv("MQTT_PASSWORD")
 
 app = FastAPI()
 mqtt_client = mqtt.Client()
