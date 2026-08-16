@@ -26,6 +26,6 @@ def read_root():
 @app.post("/streamdeck/{distrib}")
 def control_relay(distrib: str):
     if distrib not in ["windows", "linux"]:
-        return {"error": "state doit etre 'on' ou 'off'" }
-    mqtt_client.publish("maison/relay1/set", distrib)
+        return {"error": "state doit etre 'windows' ou 'linux'" }
+    mqtt_client.publish("maison/streamdesk/startpc", distrib)
     return {"status": "commande envoyee", "state": distrib}
