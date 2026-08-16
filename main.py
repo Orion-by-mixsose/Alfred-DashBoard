@@ -23,9 +23,9 @@ def startup_event():
 def read_root():
     return {"message": "Serveur en ligne"}
 
-@app.post("/relay/{state}")
-def control_relay(state: str):
-    if state not in ["on", "off"]:
+@app.post("/streamdeck/{distrib}")
+def control_relay(distrib: str):
+    if distrib not in ["windows", "linux"]:
         return {"error": "state doit etre 'on' ou 'off'" }
-    mqtt_client.publish("maison/relay1/set", state.upper())
-    return {"status": "commande envoyee", "state": state}
+    mqtt_client.publish("maison/relay1/set", distrib)
+    return {"status": "commande envoyee", "state": distrib}
